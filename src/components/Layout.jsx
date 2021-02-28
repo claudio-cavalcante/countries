@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { widths, unit } from '../styles';
+import { unit } from '../styles';
 import SearchCountry from '../components/SearchCountry'
 
 /**

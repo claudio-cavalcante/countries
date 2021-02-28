@@ -1,16 +1,17 @@
-import { Router } from '@reach/router';
 import { Fragment } from 'react';
-import Countries from './countries';
-import CountryDetail from './country-detail';
+import Countries from './Countries';
+import CountryDetail from './CountryDetail';
 import Header from '../components/Header';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import * as ROUTES from '../Routes';
 
 export default function Pages(){
     return(
         <>
         <Header />   
-        <Router primary={false} component={Fragment}>
-            <Countries path="/" />
-            <CountryDetail path="country/:id" />
+        <Router>
+            <Route exact path={ROUTES.HOME} component={Countries}/>
+            <Route path={ROUTES.COUNTRY_DETAILS} component={CountryDetail}/>
         </Router>
         </>
     )

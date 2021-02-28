@@ -23,7 +23,7 @@ const GET_COUNTRY_DETAILS = gql`
 `
 
 const CountryDetail = (props) => {
-    const countryId = props.id;
+    const countryId = props.match.params.id
 
     const { loading, error, data} = useQuery(GET_COUNTRY_DETAILS, {variables: { countryId }});
 

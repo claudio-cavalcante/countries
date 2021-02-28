@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { colors, mq } from '../styles';
+import { colors } from '../styles';
 import numberWithDots from '../resolvers/helpers'
 
 const CountryDetailCard = (props) => {

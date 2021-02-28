@@ -1,4 +1,3 @@
-import { isNonEmptyArray } from '@apollo/client/utilities';
 import styled from '@emotion/styled';
 import icon from '../assets/search.svg';
 

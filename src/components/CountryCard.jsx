@@ -1,5 +1,6 @@
-import { colors, widths, mq } from '../styles';
+import { colors, mq } from '../styles';
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 const CountryCard = (props) => 
 {
@@ -14,7 +15,9 @@ const CountryCard = (props) =>
                     <CountryCapital><LabelCapital>Capital: </LabelCapital>{props.country.capital}</CountryCapital>
                     <CardFooter>                    
                         <AuthorAndTrack>
-                            <a href={`/country/${props.country._id}`}>Mais detalhes</a>
+                            <Link to={`/country/${props.country._id}`}>
+                              Mais Detalhes
+                            </Link>
                         </AuthorAndTrack>
                     </CardFooter>
                 </CardBody>
@@ -80,6 +83,7 @@ const CardContainer = styled.div({
   
   const CardImageContainer = styled.div({
     height: 145,
+    boxShadow: '-8px 3px 5px 0px rgb(0 0 0 / 15%)',
     position: 'relative',
     '::after': {
       content: '""',
@@ -109,28 +113,10 @@ const CardContainer = styled.div({
   const CardFooter = styled.div({
     display: 'flex',
     flexDirection: 'Row',
-  });
-  
-  const AuthorImage = styled.img({
-    height: 30,
-    width: 30,
-    marginRight: 8,
-    borderRadius: '50%',
-    objectFit: 'cover',
-  });
+  }); 
   
   const AuthorAndTrack = styled.div({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-  });
-  
-  const AuthorName = styled.div({
-    lineHeight: '1em',
-    fontSize: '1.1em',
-  });
-  
-  const TrackLength = styled.div({
-    fontSize: '0.8em',
-  });
-  
+  });  
