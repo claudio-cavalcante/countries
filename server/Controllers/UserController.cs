@@ -30,6 +30,10 @@ namespace WebApi.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// Get all users.
+        /// </summary>
+        /// <returns>Return all users.</returns>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {

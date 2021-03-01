@@ -24,9 +24,11 @@ namespace WebApi.Services
             return _countries;
         }
 
-        public void Save(Country country)
+        public Country Save(Country country)
         {
             _countries.Add(country);
+
+            return country;
         }
     }
 }

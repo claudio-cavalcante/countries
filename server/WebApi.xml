@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:WebApi.Controllers.CountryController.Save(WebApi.Entities.Country)">
+            <summary>
+            Add or update a country.
+            </summary>
+            <returns>A newly created country.</returns>
+            <response code="200">Returns the newly created item</response>
+            <response code="400">If the item is null</response>
+        </member>
+        <member name="M:WebApi.Controllers.CountryController.GetAll">
+            <summary>
+            Get all countries.
+            </summary>
+            <returns>Return all countries that were modified.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.ProjectController.GetProjectURL">
+            <summary>
+            Get the URL of the project's repository.
+            </summary>
+            <returns>The URL of the project's repository.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.GetAll">
+            <summary>
+            Get all users.
+            </summary>
+            <returns>Return all users.</returns>
+        </member>
+    </members>
+</doc>
