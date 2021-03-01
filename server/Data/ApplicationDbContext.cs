@@ -10,8 +10,6 @@ namespace WebApi.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public DbSet<User> User { get; set; }
-
         public DbSet<Country> Country { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)

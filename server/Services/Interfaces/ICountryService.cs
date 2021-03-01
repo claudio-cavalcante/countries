@@ -6,7 +6,7 @@ namespace WebApi.Services.Interfaces
 {
     public interface ICountryService
     {
-        Country Save(Country country);
+        Task<Country> SaveAsync(Country country);
 
         IEnumerable<Country> GetAll();
     }

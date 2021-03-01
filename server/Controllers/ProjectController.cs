@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class ProjectController : ControllerBase

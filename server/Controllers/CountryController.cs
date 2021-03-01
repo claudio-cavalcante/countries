@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using System;
+using System.Threading.Tasks;
 using WebApi.Entities;
 using WebApi.Services.Interfaces;
 
@@ -25,15 +27,15 @@ namespace WebApi.Controllers
         /// <response code="200">Returns the newly created item</response>
         /// <response code="400">If the item is null</response>
         [HttpPost]
-        public IActionResult Save([FromBody] Country country)
+        public async Task<IActionResult> Save([FromBody] Country country)
         {
             try
             {
-                var newCountry = _countryService.Save(country);
+                var newCountry = await _countryService.SaveAsync(country);
 
                 return Ok(newCountry);
             }
-            catch
+            catch(Exception ex)
             {
                 return BadRequest();
             }
