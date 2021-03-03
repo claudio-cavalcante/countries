@@ -1,5 +1,12 @@
 const numberWithDots = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return number ? number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") : '';
 }
 
-export default numberWithDots;
+const hasOnlyTwoLetters = (value) =>{
+    return /^[A-Za-z]{2}$/gi.test(value)
+  }
+
+export {
+    numberWithDots,
+    hasOnlyTwoLetters
+};

@@ -1,12 +1,16 @@
 import styled from '@emotion/styled';
+import DotLoader from "react-spinners/DotLoader";
 
 const QueryResult = ({loading, error, data, children}) => {
     if (error) {
         return <CenteredDiv><Error>ERROR:</Error> {`${error.message}`}</CenteredDiv>;
       }
+
       if (loading) {
         return (
-          <CenteredDiv>Loading...</CenteredDiv>
+          <LoadingContainer>
+            <DotLoader color={"#2075d6"} loading={loading} size={60} />
+          </LoadingContainer>
         );
       }
       if (!data) {
@@ -16,6 +20,12 @@ const QueryResult = ({loading, error, data, children}) => {
         return children;
       }
 }
+
+const LoadingContainer = styled.div({
+  display: 'flex',
+  justifyContent: 'center',
+  marginTop: '150px'
+})
 
 const Error = styled.span({
   color: "rgb(206, 20, 66)",

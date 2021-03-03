@@ -1,22 +1,17 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { unit } from '../styles';
-import SearchCountry from '../components/SearchCountry'
 
 /**
  * Layout renders the full page content:
  * with header, Page container and footer
  */
-const Layout = ({ fullWidth, children, grid, showSearchBar }) => {  
-  const placeholder = "Pesquise aqui pelo nome do país ou pelo nome da capital do país..."
+const Layout = ({ fullWidth, children, grid }) => {    
 
-  return (
-    <>         
-      { showSearchBar && <SearchCountry placeholder={placeholder}/> }
+  return (      
       <PageContainer fullWidth={fullWidth} grid={grid}>
         {children}
       </PageContainer>
-    </>
   );
 };
 

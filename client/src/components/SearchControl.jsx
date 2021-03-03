@@ -1,18 +1,18 @@
 import styled from '@emotion/styled';
 import icon from '../assets/search.svg';
 
-const SearchCountry = (props) => {
+const SearchControl = ({ placeholder, searchValue, onChange}) => {
 
     return (
     <InputContainer>
         <InputWrapper>
-            <InputSearch type='search' placeholder={props.placeholder} />
+            <InputSearch type='search' placeholder={placeholder} value={searchValue} onChange={onChange}/>
             <IconSearch src={icon} />
         </InputWrapper>        
     </InputContainer>)
 }
 
-export default SearchCountry;
+export default SearchControl;
 
 const IconSearch = styled.img({
     position: 'absolute',
@@ -36,6 +36,7 @@ const InputSearch = styled.input({
 })
 
 const InputContainer = styled.div({
+    display: 'inline-block',
     margin: '0 auto',
     width: '50%',
     minWidth: '600px'

@@ -1,31 +1,72 @@
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import CountryCard from '../components/CountryCard'
 import Layout from '../components/Layout'
 import QueryResult from '../components/QueryResult';
-
-const COUNTRIES  = gql`
-  query getCountries {    
-    Country{
-        _id
-        name
-        capital
-        flag{
-            svgFile
-        }
-    }    
-  }
-`;
+import { GET_COUNTRIES_BY_SEARCH_VALUE } from '../graphql/gqlFragments';
+import { useState } from 'react';
+import { ToastProvider } from 'react-toast-notifications';
+import SearchControl from '../components/SearchControl';
+import styled from '@emotion/styled';
+import { PrimaryButton } from '../components/Buttons';
 
 const Countries = () => {
-    const { loading, error, data } = useQuery(COUNTRIES);
 
-    return <QueryResult loading={loading} error={error} data={data}>
-                <Layout grid showSearchBar={true}>                        
-                    { (data?.Country?.map(country => (
-                            <CountryCard key={country._id} country={country}></CountryCard>
-                        ))) }
-                </Layout>
-            </QueryResult>;
+    const [searchValue, setSearchValue] = useState('');
+    const [limit, setLimit] = useState(12);
+
+    const { loading, data, error, fetchMore } = useQuery(GET_COUNTRIES_BY_SEARCH_VALUE, 
+      { 
+      variables: { 
+        searchValue,
+        first: limit,
+        offset: 0
+      }, fetchPolicy: "network-only"}); 
+
+    const handleOnChangeTypedValue = (e) => {
+      
+        const searchValue = e.target.value;
+
+        setSearchValue(searchValue);        
+    }
+
+    const placeholder = "Pesquise aqui pelo nome do país ou pelo nome da capital do país...";  
+
+    return  (     
+            <ToastProvider> 
+              <SearchContainer>
+                <SearchControl placeholder={placeholder} searchValue={searchValue} onChange={handleOnChangeTypedValue} /> 
+              </SearchContainer>
+              <Layout grid>  
+                <QueryResult loading={loading} error={error} data={data}>                   
+                  { (data?.Country?.map(country => (
+                          <CountryCard key={country._id} country={country}></CountryCard>
+                      ))) }
+                </QueryResult>                    
+              </Layout>
+              <LoadMoreButtonContainer>
+                <LoadMoreButton onClick={() => { 
+                      var currentLength = data?.Country?.length;
+
+                      fetchMore({variables: {offset: currentLength, limit}}).then(fetchMoreResult  => setLimit(currentLength + fetchMoreResult.data.Country.length)) 
+                    }}>Mais</LoadMoreButton>  
+                </LoadMoreButtonContainer>
+            </ToastProvider>      
+        );
 }
 
 export default Countries;
+
+const LoadMoreButtonContainer = styled.div({
+  display: 'flex',
+  width: '100%',
+  margin: '20px 0 30px'
+})
+
+const LoadMoreButton = styled(PrimaryButton)({
+  margin: '0 auto'
+})
+
+const SearchContainer = styled.div({
+  display: 'table',
+  margin: '0 auto'
+});

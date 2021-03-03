@@ -1,17 +1,24 @@
+import "@pathofdev/react-tag-input/build/index.css";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
 import Pages from './pages';
+require('dotenv').config({path: __dirname + '/.env'});
+
+
+const {
+  REACT_APP_GRAPH_COUNTRIES_URL
+} = process.env
 
 const client = new ApolloClient({
-  uri: 'http://localhost:3032',
-  cache: new InMemoryCache(),
+  uri: REACT_APP_GRAPH_COUNTRIES_URL,
+  cache: new InMemoryCache()
 })
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
+  <ApolloProvider client={client} >
     <React.StrictMode>
       <Pages />
     </React.StrictMode>

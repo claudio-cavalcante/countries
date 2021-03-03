@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import Countries from './Countries';
 import CountryDetail from './CountryDetail';
 import Header from '../components/Header';

@@ -51,7 +51,6 @@ const CardContainer = styled.div({
     overflow: 'hidden',
     position: 'relative',
     ':hover': {
-      backgroundColor: colors.blue.lightest,
     },
     cursor: 'pointer',
   });
