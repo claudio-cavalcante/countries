@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Countries
+## Listagem de países, detalhes e edição.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-## Available Scripts
+## Resumo
+Este projeto faz parte de um desafio. Não está completo e nem atende aos melhores práticas de segurança. Seu propósito é apenas de estudo e avaliação.
 
-In the project directory, you can run:
+## Features
 
-### `yarn start`
+- Listagem dos dados dos países (bandeira, nome, capital)
+- Busca paginada de apenas 12 países por vez, sendo possível carregar mais países
+- Permitida busca pelo nome do país ou pelo nome da capital (Case sensitive)
+- Listagem dos detalhes dos países ao clicar em 'Mais detalhes' (Além do nome do país e capital, são listados a área, a população e o top level domain).
+- Permitido salvar o país na WebApi (Api Custom Countries).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Instalação
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+É necessário [Node.js](https://nodejs.org/) para rodar este projeto
 
-### `yarn test`
+Primeiro de tudo, baixe o projeto da API GRAPH Countries que se localiza em https://github.com/lennertVanSever/graphcountries e siga todas as instruções para rodar este projeto.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Em seguida, baixe este projeto que contém 2 subprojetos:
+ 
+- client (frontend)          
+- server (backend)
 
-### `yarn build`
+## SERVER
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Pré-requisitos:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* [.NET Core instalado](https://docs.microsoft.com/pt-br/dotnet/core/install/windows?tabs=net50)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Começando:
 
-### `yarn eject`
+1. No repositório baixado, navegue para /server
+2. Edite o arquivo appsettings.json e informe a string de conexão do banco de dados em ConnectionStrings > CountryContext ou crie uma variável de ambiente no sistema operacional com a seguinte chave 'ConnectionStrings:CountryContext'.
+3. Rode o projeto com `dotnet run`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## CLIENT
+Pré-requisitos:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* [NodeJS e npm instalados](https://nodejs.org/en/download/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Começando:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. No repositório baixado, navegue para /client/src/config.json
+2. Edita as informações do JSON de acordo com os projetos que estão rodando
 
-## Learn More
+```
+"SERVER_URL": (URL DO SERVIDOR do projeto localizado em /server)
+"GRAPHQL_SERVER_URL": (URL do servidor graphcountries citado acima)
+"USER": usuário 'test' do projeo localizado em /server
+"PASSWORD": senha 'test' do projeto localizado em /server
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Baixe as dependências com `npm install`
+4. Com os dois projetos anteriores rodando (graphcountries e server) rode este projeto com o comando `npm start` 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+MIT
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Free Software, Hell Yeah!**
