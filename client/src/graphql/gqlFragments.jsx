@@ -29,5 +29,24 @@ const GET_COUNTRIES_BY_SEARCH_VALUE = gql`
   ${FRAGMENT_COUNTRY_FIELDS}
 `
 
+const GET_COUNTRY_DETAILS = gql`
+    query getDetails($countryId: String!, $first: Int!){
+        Country(_id: $countryId, first: $first){            
+            _id
+            name,
+            capital,
+            area
+            population
+            topLevelDomains{
+                name
+            }
+            flag{
+                svgFile
+            }           
+        }
+    }   
+`
+
 export { GET_COUNTRIES };
 export { GET_COUNTRIES_BY_SEARCH_VALUE };
+export { GET_COUNTRY_DETAILS }

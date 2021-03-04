@@ -8,6 +8,7 @@ import { ToastProvider } from 'react-toast-notifications';
 import SearchControl from '../components/SearchControl';
 import styled from '@emotion/styled';
 import { PrimaryButton } from '../components/Buttons';
+import Header from './../components/Header';
 
 const Countries = () => {
 
@@ -20,7 +21,11 @@ const Countries = () => {
         searchValue,
         first: limit,
         offset: 0
-      }, fetchPolicy: "network-only"}); 
+      }}); 
+
+    /*console.log({loading})
+    console.log({data})
+    console.log({error})*/
 
     const handleOnChangeTypedValue = (e) => {
       
@@ -33,22 +38,26 @@ const Countries = () => {
 
     return  (     
             <ToastProvider> 
+              <Header /> 
+              
               <SearchContainer>
                 <SearchControl placeholder={placeholder} searchValue={searchValue} onChange={handleOnChangeTypedValue} /> 
               </SearchContainer>
+
               <Layout grid>  
-                <QueryResult loading={loading} error={error} data={data}>                   
-                  { (data?.Country?.map(country => (
+                <QueryResult loading={loading} error={error} data={data}>                 
+                  { (data && data.Country && data?.Country?.map(country => (
                           <CountryCard key={country._id} country={country}></CountryCard>
                       ))) }
                 </QueryResult>                    
               </Layout>
+
               <LoadMoreButtonContainer>
-                <LoadMoreButton onClick={() => { 
+                {data && data.Country.length && !loading && <LoadMoreButton onClick={() => { 
                       var currentLength = data?.Country?.length;
 
                       fetchMore({variables: {offset: currentLength, limit}}).then(fetchMoreResult  => setLimit(currentLength + fetchMoreResult.data.Country.length)) 
-                    }}>Mais</LoadMoreButton>  
+                    }}>Mais</LoadMoreButton> } 
                 </LoadMoreButtonContainer>
             </ToastProvider>      
         );

@@ -3,13 +3,13 @@ import DotLoader from "react-spinners/DotLoader";
 
 const QueryResult = ({loading, error, data, children}) => {
     if (error) {
-        return <CenteredDiv><Error>ERROR:</Error> {`${error.message}`}</CenteredDiv>;
+        return <CenteredDiv><Error>ERROR:</Error> {`${JSON.stringify(error)}`}</CenteredDiv>;
       }
 
       if (loading) {
         return (
           <LoadingContainer>
-            <DotLoader color={"#2075d6"} loading={loading} size={60} />
+            <DotLoader color={"#2075d6"} loading={loading} size={60} />Loading...
           </LoadingContainer>
         );
       }

@@ -10,24 +10,7 @@ import { hasOnlyTwoLetters } from "../resolvers/helpers";
 import config from './../config.json';
 import { useToasts } from 'react-toast-notifications';
 import { PrimaryButton, SecondaryButton } from './Buttons';
-
-const GET_COUNTRY_DETAILS = gql`
-    query getDetails($countryId: String!, $first: Int!){
-        Country(_id: $countryId, first: $first){            
-            _id
-            name,
-            capital,
-            area
-            population
-            topLevelDomains{
-                name
-            }
-            flag{
-                svgFile
-            }           
-        }
-    }   
-`
+import { GET_COUNTRY_DETAILS } from '../graphql/gqlFragments';
 
 const CountryDetailCard = ({ countryId }) => {
     const history = useHistory();
@@ -85,7 +68,7 @@ const CountryDetailCard = ({ countryId }) => {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',
-            'Authorization': `Basic ${config.AUTH_TOKEN}`
+            'Authorization': `Basic ${btoa(config.USER + ":" + config.PASSWORD)}`
            },
           body: JSON.stringify(country)
         });
@@ -123,7 +106,7 @@ const CountryDetailCard = ({ countryId }) => {
                             <Input value={capital || ''} onChange={(evt) => handleChange(evt)}/>
                         </FormControl>
 
-                      <FormControl id="area" label="Àrea">
+                      <FormControl id="area" label="Área">
                           <Input value={area || ''} onChange={(evt) => handleChange(evt)}/>
                         </FormControl>
 

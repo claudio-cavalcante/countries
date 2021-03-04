@@ -1,23 +1,33 @@
 import { colors, mq } from '../styles';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-const CountryCard = (props) => 
+const CountryCard = ({ country }) => 
 {
+    if(!country){
+      return null;
+    }
+    const { _id, name, capital, flag } = country;  
+
+    const { svgFile } = flag;
+
     return (
         <CardContainer>
             <CardContent>
                 <CardImageContainer>
-                    <CardImage src={props.country.flag.svgFile} alt={props.country.name + " flag"} />
+                    <CardImage data-testid="countryFlag" src={svgFile} alt={name + " flag"} />
                 </CardImageContainer>
                 <CardBody>
-                    <CardTitle>{props.country.name}</CardTitle>
-                    <CountryCapital><LabelCapital>Capital: </LabelCapital>{props.country.capital}</CountryCapital>
+                    <CardTitle data-testid="countryName">{name}</CardTitle>
+                    <CountryCapital data-testid="countryCapital"><LabelCapital>Capital: </LabelCapital>{capital}</CountryCapital>
                     <CardFooter>                    
                         <AuthorAndTrack>
-                            <Link to={`/country/${props.country._id}`}>
+                          <Router>
+                            <Link data-testid="countryId" to={`/country/${_id}`}>
                               Mais Detalhes
                             </Link>
+                            </Router>
                         </AuthorAndTrack>
                     </CardFooter>
                 </CardBody>
