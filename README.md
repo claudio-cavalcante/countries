@@ -36,6 +36,7 @@ Começando:
 1. No repositório baixado, navegue para /server
 2. Edite o arquivo appsettings.json e informe a string de conexão do banco de dados em ConnectionStrings > CountryContext ou crie uma variável de ambiente no sistema operacional com a seguinte chave 'ConnectionStrings:CountryContext'.
 3. Rode o projeto com `dotnet run`
+4. Documentação da API pode ser acessada em [localhost]/swagger/index.html
 
 ## CLIENT
 Pré-requisitos:
