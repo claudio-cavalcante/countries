@@ -3,6 +3,7 @@ import { render, cleanup } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing'
 import { GET_COUNTRY_DETAILS } from '../graphql/gqlFragments';
 import CountryDetail from './CountryDetail';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 afterEach(cleanup)
 
@@ -45,8 +46,10 @@ describe('Country', () => {
     it('should render 1 countries', async () =>{
         const {  findByText, findByLabelText, getByText } = render(
             
-            <MockedProvider mocks={mocks} addTypename={false} >       
-                <CountryDetail match={{ params: {id: "0"}}}/>      
+            <MockedProvider mocks={mocks} addTypename={false} >
+                <Router>      
+                    <CountryDetail match={{ params: {id: "0"}}}/>
+                </Router>       
             </MockedProvider>
         );    
 

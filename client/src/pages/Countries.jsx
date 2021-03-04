@@ -8,7 +8,7 @@ import { ToastProvider } from 'react-toast-notifications';
 import SearchControl from '../components/SearchControl';
 import styled from '@emotion/styled';
 import { PrimaryButton } from '../components/Buttons';
-import Header from './../components/Header';
+
 
 const Countries = () => {
 
@@ -37,9 +37,7 @@ const Countries = () => {
     const placeholder = "Pesquise aqui pelo nome do país ou pelo nome da capital do país...";  
 
     return  (     
-            <ToastProvider> 
-              <Header /> 
-              
+            <ToastProvider>               
               <SearchContainer>
                 <SearchControl placeholder={placeholder} searchValue={searchValue} onChange={handleOnChangeTypedValue} /> 
               </SearchContainer>

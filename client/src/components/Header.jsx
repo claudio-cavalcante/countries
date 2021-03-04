@@ -12,7 +12,6 @@ const Header = ({ children }) => {
     <HeaderBar>
       <Container>
         <HomeButtonContainer>
-          <HomeLink to="/">
             <HomeButton>
               <LogoContainer>
                 <Logo src="https://i7.uihere.com/icons/972/859/830/map-of-the-world-43e48b22e241c218f03c88c0878a770c.png" />
@@ -22,7 +21,6 @@ const Header = ({ children }) => {
                 <div>- Content about many countries from the world -</div>
               </Title>
             </HomeButton>
-          </HomeLink>
         </HomeButtonContainer>
         {children}
       </Container>
@@ -49,13 +47,11 @@ const Container = styled.div({
   width: `${widths.regularPageWidth}px`,
 });
 
-const HomeLink = styled(Link)({
-  textDecoration: 'none',
-});
 
 const HomeButtonContainer = styled.div({
   display: 'flex',
   flex: 1,
+  userSelect: 'none'
 });
 
 const HomeButton = styled.div({

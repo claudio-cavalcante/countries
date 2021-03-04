@@ -22,12 +22,10 @@ const CountryCard = ({ country }) =>
                     <CardTitle data-testid="countryName">{name}</CardTitle>
                     <CountryCapital data-testid="countryCapital"><LabelCapital>Capital: </LabelCapital>{capital}</CountryCapital>
                     <CardFooter>                    
-                        <AuthorAndTrack>
-                          <Router>
+                        <AuthorAndTrack>           
                             <Link data-testid="countryId" to={`/country/${_id}`}>
                               Mais Detalhes
                             </Link>
-                            </Router>
                         </AuthorAndTrack>
                     </CardFooter>
                 </CardBody>

@@ -2,7 +2,8 @@ import React from 'react'
 import { render, cleanup, findByTestId, findByText } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing'
 import { GET_COUNTRIES_BY_SEARCH_VALUE } from '../graphql/gqlFragments';
-import Countries from './Countries'
+import Countries from './Countries';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 afterEach(cleanup)
 
@@ -50,8 +51,10 @@ describe('Country', () => {
     it('should render 2 countries', async () =>{
         const { getByText, findByText, findByAltText } = render(
             
-            <MockedProvider mocks={mocks} addTypename={false} >       
-                <Countries />      
+            <MockedProvider mocks={mocks} addTypename={false} > 
+                <Router>     
+                  <Countries />      
+                </Router>   
             </MockedProvider>
         );    
 

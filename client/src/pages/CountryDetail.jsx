@@ -8,7 +8,6 @@ const CountryDetail = (props) => {
 
     return (
         <ToastProvider> 
-            <Header /> 
             <Layout grid>     
                 <CountryDetailCard countryId={countryId} />                              
             </Layout>
